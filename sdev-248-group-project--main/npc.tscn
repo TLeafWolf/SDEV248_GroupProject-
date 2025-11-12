@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfv6a3m0rupw0"]
+
+[ext_resource type="Texture2D" uid="uid://tkd08mroggiq" path="res://icon.svg" id="1_ideak"]
+[ext_resource type="Script" uid="uid://bsxsrsjmqxpl0" path="res://npc.gd" id="1_xxcha"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxcha"]
+radius = 225.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kh24r"]
+size = Vector2(122, 125)
+
+[node name="NPC" type="Area2D"]
+script = ExtResource("1_xxcha")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ideak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xxcha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_kh24r")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -80.0
+offset_top = -147.0
+offset_right = 88.0
+offset_bottom = -82.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
