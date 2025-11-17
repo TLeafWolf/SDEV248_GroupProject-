@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://dulf0ja1t43c5"]
+[gd_scene load_steps=38 format=4 uid="uid://dulf0ja1t43c5"]
 
 [ext_resource type="Script" uid="uid://cuqdvre6mow6n" path="res://Player.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://cnpuadipxu1hf" path="res://Dirt_Path.svg" id="2_036b0"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dwco07vbcf7y7" path="res://Brick_Wall.svg" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bfv6a3m0rupw0" path="res://npc.tscn" id="4_aqk2v"]
 [ext_resource type="Script" uid="uid://dmpbf5xradthv" path="res://SDEV248_GroupProject--main/camera_2d.gd" id="7_pkg7o"]
+[ext_resource type="Script" uid="uid://cvf24omt0jnlx" path="res://canvas_layer.gd" id="8_gbfbk"]
+[ext_resource type="Script" uid="uid://tnljprvqojc2" path="res://endscreen.gd" id="9_ioo17"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("3_tlwt5")
@@ -465,6 +467,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioo17"]
 size = Vector2(189.44305, 243.8003)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioo17"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wse8f"]
+
 [node name="world" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -498,3 +504,56 @@ position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("7_pkg7o")
 player_path = NodePath("../Player")
+
+[node name="Introcutscene" type="CanvasLayer" parent="."]
+script = ExtResource("8_gbfbk")
+
+[node name="Panel" type="Panel" parent="Introcutscene"]
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 646.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ioo17")
+
+[node name="Label" type="Label" parent="Introcutscene"]
+offset_left = 33.0
+offset_top = 6.0
+offset_right = 1114.0
+offset_bottom = 227.0
+theme_override_font_sizes/font_size = 60
+text = "Welcome to our game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Introcutscene"]
+offset_left = 298.0
+offset_top = 381.0
+offset_right = 435.0
+offset_bottom = 412.0
+scale = Vector2(4.199999, 2.7342448)
+text = "Lets Get Started!"
+
+[node name="Endscreen" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("9_ioo17")
+
+[node name="Panel" type="Panel" parent="Endscreen"]
+offset_right = 1155.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wse8f")
+
+[node name="Label" type="Label" parent="Endscreen"]
+offset_right = 1154.0
+offset_bottom = 273.0
+theme_override_font_sizes/font_size = 40
+text = "Congragulations on finishing our game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Endscreen"]
+offset_left = -3.0
+offset_top = 304.0
+offset_right = 1153.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 30
+text = "Press here to start over!"
