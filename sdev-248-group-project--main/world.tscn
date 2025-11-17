@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c8u22iit8f2m8" path="res://Tree.svg" id="3_dwbse"]
 [ext_resource type="Texture2D" uid="uid://dwco07vbcf7y7" path="res://Brick_Wall.svg" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://bfv6a3m0rupw0" path="res://npc.tscn" id="4_aqk2v"]
-[ext_resource type="Script" uid="uid://dmpbf5xradthv" path="res://camera_2d.gd" id="7_pkg7o"]
+[ext_resource type="Script" uid="uid://dmpbf5xradthv" path="res://SDEV248_GroupProject--main/camera_2d.gd" id="7_pkg7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("3_tlwt5")
@@ -489,6 +489,7 @@ shape = SubResource("RectangleShape2D_ioo17")
 
 [node name="NPC" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(614, -55)
+scale = Vector2(0.36000243, 0.27999908)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(612, 103)
