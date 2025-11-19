@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var speed: float = 150.0
+@export var speed: float = 150.0
 @onready var anim = $AnimatedSprite2D
 
 func _physics_process(delta):
@@ -29,3 +29,7 @@ func _physics_process(delta):
 			anim.play(new_animation)
 	else:
 		anim.stop()
+
+
+func _on_goal_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

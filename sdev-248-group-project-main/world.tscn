@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://dulf0ja1t43c5"]
+[gd_scene load_steps=80 format=4 uid="uid://dulf0ja1t43c5"]
 
 [ext_resource type="Script" uid="uid://cuqdvre6mow6n" path="res://rigid_body_2d.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://l6w3yu721vnt" path="res://art/terrain/grass_tileset_16x16.png" id="2_k83mh"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://7bdliobl1m3m" path="res://art/backgroundObjects/magic_circle_light_shadow.png" id="28_bh8nc"]
 [ext_resource type="Texture2D" uid="uid://c7bmae3ihfiv6" path="res://art/backgroundObjects/Demon_scull_light_shadow.png" id="28_qktwf"]
 [ext_resource type="Texture2D" uid="uid://gndilfkuet6t" path="res://art/backgroundObjects/white_crystal_light_shadow2.png" id="29_bh8nc"]
+[ext_resource type="PackedScene" uid="uid://p5l4jc1dkxwg" path="res://enemy.tscn" id="30_qktwf"]
+[ext_resource type="PackedScene" uid="uid://b0h4401rcxlq3" path="res://enemy_2.tscn" id="31_bh8nc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("3_tlwt5")
@@ -2242,6 +2244,9 @@ size = Vector2(189.44305, 243.8003)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wse8f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh8nc"]
+size = Vector2(49, 53)
+
 [node name="world" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -2331,6 +2336,7 @@ texture = ExtResource("22_k83mh")
 position = Vector2(575, 322)
 lock_rotation = true
 script = ExtResource("1_fj7yv")
+speed = 350.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(0.28, 0.32000124)
@@ -2368,7 +2374,6 @@ position = Vector2(1904, -1160)
 texture = ExtResource("17_4h6ng")
 
 [node name="Introcutscene" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("8_gbfbk")
 
 [node name="Panel" type="Panel" parent="Introcutscene"]
@@ -2420,3 +2425,21 @@ offset_right = 1153.0
 offset_bottom = 645.0
 theme_override_font_sizes/font_size = 30
 text = "Press here to start over!"
+
+[node name="Enemy" parent="." instance=ExtResource("30_qktwf")]
+position = Vector2(2164, -15)
+mass = 21.868
+path_points = [Vector2(2164, -11), Vector2(1552, -11)]
+
+[node name="Enemy2" parent="." instance=ExtResource("31_bh8nc")]
+position = Vector2(2251, 163)
+mass = 25.007
+path_points = [Vector2(2251, -227), Vector2(2251, 165)]
+
+[node name="goal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goal"]
+position = Vector2(2638, -12)
+shape = SubResource("RectangleShape2D_bh8nc")
+
+[connection signal="body_entered" from="goal" to="Endscreen" method="_on_goal_body_entered"]

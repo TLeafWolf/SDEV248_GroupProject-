@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Sdev 248 Group Project Main(working)"
+config/name="Sdev 248 Group Project Main"
 run/main_scene="uid://dulf0ja1t43c5"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"

@@ -28,5 +28,5 @@ func _on_button_pressed():
 
 
 func _on_goal_body_entered(body: Node2D) -> void:
-	if body.name == "player":
+	if body.name == "Player":
 		show_victory()
