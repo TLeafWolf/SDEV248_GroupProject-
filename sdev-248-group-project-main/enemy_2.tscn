@@ -1,10 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0h4401rcxlq3"]
+[gd_scene load_steps=18 format=3 uid="uid://b0h4401rcxlq3"]
 
 [ext_resource type="Script" uid="uid://du5exxclv2uih" path="res://enemy.gd" id="1_vfv5t"]
 [ext_resource type="Texture2D" uid="uid://c7mhd3r3bnxnl" path="res://art/characters/ZombieQueen.png" id="2_mvvu1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wujgv"]
 size = Vector2(47, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfv5t"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(0, 0, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvvu1"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(96, 0, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anlw3"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(192, 0, 96, 129)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hv4bk"]
 atlas = ExtResource("2_mvvu1")
@@ -18,8 +30,46 @@ region = Rect2(96, 258, 96, 129)
 atlas = ExtResource("2_mvvu1")
 region = Rect2(192, 258, 96, 129)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u64o8"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(0, 387, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roo12"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(96, 387, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nii7r"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(192, 387, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orijv"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(0, 129, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpdht"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(96, 129, 96, 129)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5e66"]
+atlas = ExtResource("2_mvvu1")
+region = Rect2(192, 129, 96, 129)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_anlw3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfv5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvvu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anlw3")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hv4bk")
@@ -31,7 +81,35 @@ animations = [{
 "texture": SubResource("AtlasTexture_05s6o")
 }],
 "loop": true,
-"name": &"default",
+"name": &"front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u64o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roo12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nii7r")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orijv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpdht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5e66")
+}],
+"loop": true,
+"name": &"right",
 "speed": 5.0
 }]
 
@@ -49,6 +127,8 @@ shape = SubResource("RectangleShape2D_wujgv")
 position = Vector2(-6.000002, 10.999996)
 scale = Vector2(0.95833343, 0.89922476)
 sprite_frames = SubResource("SpriteFrames_anlw3")
+animation = &"right"
+autoplay = "front"
 
 [node name="HitboxArea" type="Area2D" parent="."]
 
