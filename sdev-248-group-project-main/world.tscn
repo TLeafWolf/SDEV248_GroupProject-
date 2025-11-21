@@ -1,6 +1,5 @@
 [gd_scene load_steps=109 format=4 uid="uid://dulf0ja1t43c5"]
 
-[ext_resource type="Script" uid="uid://cuqdvre6mow6n" path="res://rigid_body_2d.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://l6w3yu721vnt" path="res://art/terrain/grass_tileset_16x16.png" id="2_k83mh"]
 [ext_resource type="Texture2D" uid="uid://2qsmovbv530w" path="res://art/terrain/FieldsTileset.png" id="2_o3ebs"]
 [ext_resource type="Texture2D" uid="uid://dwco07vbcf7y7" path="res://Brick_Wall.svg" id="3_tlwt5"]
@@ -31,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://y0uwukx4ws65" path="res://art/backgroundObjects/King.png" id="21_4h6ng"]
 [ext_resource type="Texture2D" uid="uid://vdj2uijvvb2i" path="res://art/terrain/Moss_tree1.png" id="22_k83mh"]
 [ext_resource type="Texture2D" uid="uid://7bdliobl1m3m" path="res://art/backgroundObjects/magic_circle_light_shadow.png" id="28_bh8nc"]
+[ext_resource type="Script" uid="uid://cuqdvre6mow6n" path="res://Player.gd" id="28_g1i3r"]
 [ext_resource type="Texture2D" uid="uid://c7bmae3ihfiv6" path="res://art/backgroundObjects/Demon_scull_light_shadow.png" id="28_qktwf"]
 [ext_resource type="Texture2D" uid="uid://gndilfkuet6t" path="res://art/backgroundObjects/white_crystal_light_shadow2.png" id="29_bh8nc"]
 [ext_resource type="PackedScene" uid="uid://p5l4jc1dkxwg" path="res://enemy.tscn" id="30_qktwf"]
@@ -2549,10 +2549,9 @@ texture = ExtResource("18_o3ebs")
 position = Vector2(151, -172)
 texture = ExtResource("20_qktwf")
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(575, 322)
-lock_rotation = true
-script = ExtResource("1_fj7yv")
+script = ExtResource("28_g1i3r")
 speed = 350.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]

@@ -1,12 +1,11 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-var speed: float = 150.0
+@export var speed: float = 150.0
 @onready var anim = $AnimatedSprite2D
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var new_animation = ""
-	
 	if Input.is_action_pressed("right"):
 		input_vector.x += 1
 		new_animation = "right"
@@ -19,13 +18,21 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("up"):
 		input_vector.y -= 1
 		new_animation = "up"
-
+		
 	input_vector = input_vector.normalized()
-	linear_velocity = input_vector * speed
-	
-	# play the animation if its different than the current
+
+	# Set the velocity of the character
+	velocity = input_vector * speed
+
+	# Use the move_and_slide method for character movement
+	move_and_slide()
+
+	# Play the animation if it's different than current
 	if new_animation != "":
-		if anim.animation != new_animation or anim.is_playing() == false:
+		if anim.animation != new_animation:
 			anim.play(new_animation)
 	else:
 		anim.stop()
+
+func _on_goal_body_entered(body: Node2D) -> void:
+	pass  # Replace with goal interaction logic
