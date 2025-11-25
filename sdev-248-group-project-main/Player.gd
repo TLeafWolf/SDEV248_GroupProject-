@@ -31,7 +31,7 @@ func _physics_process(delta):
 	# Rug detection first half 1 work on here
 	detect_raft()
 
-	# CORE CHANGE: If the player is on the rug and gives input, prioritize getting off the rug.
+
 	if is_on_raft:
 		if input_vector.length() > 0:
 			# Player wants to move, so we allow normal movement and clear the rug state.
