@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://br78ju0qnrtcr"]
+
+[ext_resource type="Script" uid="uid://bqf3i0sphg4wm" path="res://raft.gd" id="1_aft1c"]
+[ext_resource type="Texture2D" uid="uid://drl77y5q7a2ag" path="res://art/movingPlatform/raft.png" id="1_gnhtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aft1c"]
+size = Vector2(64, 65)
+
+[node name="raft" type="StaticBody2D" groups=["raft"]]
+script = ExtResource("1_aft1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gnhtl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aft1c")

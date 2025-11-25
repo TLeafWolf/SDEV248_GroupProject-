@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://dulf0ja1t43c5"]
+[gd_scene load_steps=111 format=4 uid="uid://dulf0ja1t43c5"]
 
 [ext_resource type="Texture2D" uid="uid://l6w3yu721vnt" path="res://art/terrain/grass_tileset_16x16.png" id="2_k83mh"]
 [ext_resource type="Texture2D" uid="uid://2qsmovbv530w" path="res://art/terrain/FieldsTileset.png" id="2_o3ebs"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://cuqdvre6mow6n" path="res://Player.gd" id="28_g1i3r"]
 [ext_resource type="Texture2D" uid="uid://c7bmae3ihfiv6" path="res://art/backgroundObjects/Demon_scull_light_shadow.png" id="28_qktwf"]
 [ext_resource type="Texture2D" uid="uid://gndilfkuet6t" path="res://art/backgroundObjects/white_crystal_light_shadow2.png" id="29_bh8nc"]
+[ext_resource type="PackedScene" uid="uid://br78ju0qnrtcr" path="res://Raft.tscn" id="29_my276"]
 [ext_resource type="PackedScene" uid="uid://p5l4jc1dkxwg" path="res://enemy.tscn" id="30_qktwf"]
 [ext_resource type="PackedScene" uid="uid://b0h4401rcxlq3" path="res://enemy_2.tscn" id="31_bh8nc"]
 [ext_resource type="Texture2D" uid="uid://bv6hjon6thl85" path="res://art/characters/zombie_spritesheet.png" id="32_jjr1n"]
@@ -2245,6 +2246,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioo17"]
 size = Vector2(189.44305, 243.8003)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_my276"]
+size = Vector2(12.546295, 99.76135)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioo17"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wse8f"]
@@ -2550,9 +2554,9 @@ position = Vector2(151, -172)
 texture = ExtResource("20_qktwf")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+z_index = 1
 position = Vector2(575, 322)
 script = ExtResource("28_g1i3r")
-speed = 350.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 scale = Vector2(0.28, 0.32000124)
@@ -2564,6 +2568,16 @@ position = Vector2(0, -1.5)
 rotation = -3.1415925
 scale = Vector2(0.2850467, -0.26661167)
 shape = SubResource("RectangleShape2D_ioo17")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, -3)
+scale = Vector2(4.463474, 0.6315069)
+shape = SubResource("RectangleShape2D_my276")
+
+[node name="rug" parent="." instance=ExtResource("29_my276")]
+position = Vector2(510, -150)
 
 [node name="NPC" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(614, -55)
